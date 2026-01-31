@@ -1,75 +1,130 @@
-import { Phone, MessageCircle } from "lucide-react";
+"use client";
 
-export default function ComingSoonPage() {
-  // Contact details - replace with actual values
-  const phoneNumber = "+919071573153";
-  const whatsappNumber = "+919071573153";
-  const displayPhone = "+91 90715 73153";
+import { Fragment } from "react/jsx-runtime";
+import { Hero } from "@/components/sections/Hero";
+import { FeatureList } from "@/components/sections/FeatureList";
+import { Icons } from "@/components/icons";
+import { BenefitCards } from "@/components/sections/BenefitCards";
+import { CtaBanner } from "@/components/sections/CtaBanner";
+import { Button } from "@/components/ui/Button";
 
+export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-neutral-50 flex items-center justify-center px-6 py-12">
-      <div className="max-w-3xl w-full text-center">
-        {/* Logo/Brand mark placeholder */}
-        <div className="mb-12">
-          <div className="inline-block px-6 py-2 border border-neutral-300 text-neutral-700 text-sm tracking-widest font-light">
-            PREMIUM ALUMINIUM
-          </div>
-        </div>
+    <Fragment>
+      <Hero />
 
-        {/* Main headline */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-neutral-900 mb-6 tracking-tight leading-tight">
-          Redefining Modern
-          <span className="block mt-2">Architecture</span>
-        </h1>
-
-        {/* Supporting copy */}
-        <p className="text-lg md:text-xl text-neutral-600 font-light max-w-2xl mx-auto mb-8 leading-relaxed">
-          Premium aluminium windows and doors engineered for contemporary
-          living. Precision crafted, energy efficient, and built to last.
-        </p>
-
-        {/* Coming Soon badge */}
-        <div className="inline-block mb-12">
-          <span className="text-sm uppercase tracking-widest text-neutral-500 font-medium px-4 py-2 border border-neutral-300 rounded-full">
-            Coming Soon
+      <FeatureList
+        badge="// Why Alutech"
+        heading={
+          <span>
+            Built for Performance. <br className="hidden md:block" /> Designed
+            for Modern Architecture.
           </span>
-        </div>
+        }
+        items={[
+          {
+            title: "Precision Engineering",
+            description:
+              "Engineered aluminium systems delivering long-term durability, precise performance, and consistent quality across residential and commercial projects.",
+            icon: Icons.target,
+          },
+          {
+            title: "Custom System Solutions",
+            description:
+              "Custom-built solutions designed to match architectural intent while meeting functional requirements, site conditions, and project timelines.",
+            icon: Icons.blueprint,
+          },
+          {
+            title: "End-to-End Execution",
+            description:
+              "Experienced teams manage fabrication and installation with accuracy, coordination, and accountability from initial consultation to handover.",
+            icon: Icons.screwdriver,
+          },
+          {
+            title: "Proven Material Quality",
+            description:
+              "Premium materials and tested systems ensure weather resistance, thermal efficiency, and low maintenance throughout product lifespan.",
+            icon: Icons.shieldCheck,
+          },
+        ]}
+      />
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {/* WhatsApp button */}
-          <a
-            href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 bg-neutral-900 text-white px-8 py-4 rounded-none hover:bg-neutral-800 transition-colors duration-200 w-full sm:w-auto justify-center"
-            aria-label="Contact us on WhatsApp"
-          >
-            <MessageCircle className="w-5 h-5" aria-hidden="true" />
-            <span className="font-medium">WhatsApp</span>
-          </a>
+      <div className="bg-background-200">
+        <BenefitCards />
 
-          {/* Call button */}
-          <a
-            href={`tel:${phoneNumber}`}
-            className="group inline-flex items-center gap-3 border-2 border-neutral-900 text-neutral-900 px-8 py-4 rounded-none hover:bg-neutral-900 hover:text-white transition-colors duration-200 w-full sm:w-auto justify-center"
-            aria-label={`Call us at ${displayPhone}`}
-          >
-            <Phone className="w-5 h-5" aria-hidden="true" />
-            <span className="font-medium">Call Now</span>
-          </a>
-        </div>
+        <CtaBanner />
 
-        {/* Phone number display */}
-        <p className="mt-8 text-neutral-500 text-sm">{displayPhone}</p>
-
-        {/* Bottom spacing */}
-        <div className="mt-20 pt-8 border-t border-neutral-200">
-          <p className="text-xs text-neutral-400 uppercase tracking-wider">
-            Excellence in Every Detail
-          </p>
-        </div>
+        <FeatureList
+          badge="// Applications"
+          heading={
+            <span>
+              Aluminium Systems Designed <br className="hidden md:block" /> for
+              Every Building Context
+            </span>
+          }
+          description="Solutions tailored to different project types, performance requirements, and architectural needs."
+          items={[
+            {
+              title: "Residential Projects",
+              description:
+                "Ideal for homeowners and residential developers seeking durable, low-maintenance aluminium systems that enhance comfort, natural light, and modern living spaces.",
+              icon: Icons.houseSimple,
+            },
+            {
+              title: "Commercial Buildings",
+              description:
+                "Designed for offices, retail spaces, and commercial facilities that require reliable performance, clean aesthetics, and systems capable of handling high-traffic environments.",
+              icon: Icons.buildings,
+            },
+            {
+              title: "Architectural & High-Rise Developments",
+              description:
+                "Engineered for architects and developers working on complex, large-scale projects where structural integrity, design flexibility, and long-term performance are critical.",
+              icon: Icons.buildingOffice,
+            },
+            {
+              title: "Industrial Applications",
+              description:
+                "Built to perform in demanding industrial environments, offering strength, weather resistance, and dependable operation where durability and functionality matter most.",
+              icon: Icons.factory,
+            },
+          ]}
+        />
       </div>
-    </main>
+
+      <section className="bg-background-200 border-background-300 relative overflow-hidden border-t border-dashed px-6 py-20 lg:py-36">
+        <div className="absolute top-0 right-0 left-0 grid grid-cols-10">
+          {Array.from({ length: 200 }).map((_, i) => (
+            <div
+              key={i}
+              className="border-background-300 h-16 w-full border-r border-b border-dashed md:h-20"
+            />
+          ))}
+        </div>
+
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-10">
+          <div className="flex w-full flex-col items-center gap-5 text-center">
+            <span className="text-label label text-primary-100 inline-flex p-1">
+              // Get Started
+            </span>
+
+            <h1 className="text-h1 text-text-100">
+              Ready to Upgrade to
+              <br className="hidden md:block" />
+              Premium Aluminium Systems?
+            </h1>
+
+            <p className="text-body-l text-text-200 font-medium">
+              Speak directly with our team to discuss your project requirements,
+              system options, and next steps—quickly and without obligation.
+            </p>
+          </div>
+
+          <a href="https://wa.me/919071573153" target="_blank">
+            <Button type="button">WhatsApp Us Now</Button>
+          </a>
+        </div>
+      </section>
+    </Fragment>
   );
 }
