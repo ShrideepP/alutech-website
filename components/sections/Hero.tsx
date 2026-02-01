@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
 export const Hero = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery(768);
 
   return (
     <section className="bg-background-200 relative overflow-hidden pt-20 md:py-36">
