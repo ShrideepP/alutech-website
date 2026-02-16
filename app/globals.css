@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("/fonts/BDOGrotesk-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("/fonts/BDOGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("/fonts/BDOGrotesk-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("/fonts/BDOGrotesk-DemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-family-sans: "BDO Grotesk", system-ui, -apple-system, sans-serif;
+
+  --color-primary-100: #2c4f6d;
+  --color-primary-200: #3d6b8f;
+  --color-primary-300: #e3edf5;
+
+  --color-accent-100: #d87b3a;
+  --color-accent-200: #e9a46d;
+
+  --color-text-100: #2a2a2a;
+  --color-text-200: #6b6b6b;
+
+  --color-background-100: #ffffff;
+  --color-background-200: #f8fafb;
+  --color-background-300: #e5e9ec;
+
+  --text-heading-xl: 48px;
+  --text-heading-xl--line-height: 1.15;
+  --text-heading-xl--letter-spacing: -0.05em;
+  --text-heading-xl--font-weight: 500;
+
+  --text-heading-l: 40px;
+  --text-heading-l--line-height: 1.15;
+  --text-heading-l--letter-spacing: -0.05em;
+  --text-heading-l--font-weight: 500;
+
+  --text-heading-m: 32px;
+  --text-heading-m--line-height: 1.15;
+  --text-heading-m--letter-spacing: -0.05em;
+  --text-heading-m--font-weight: 500;
+
+  --text-heading-s: 28px;
+  --text-heading-s--line-height: 1.15;
+  --text-heading-s--letter-spacing: -0.05em;
+  --text-heading-s--font-weight: 500;
+
+  --text-heading-xs: 24px;
+  --text-heading-xs--line-height: 1.15;
+  --text-heading-xs--letter-spacing: -0.05em;
+  --text-heading-xs--font-weight: 500;
+
+  --text-body-l-regular: 20px;
+  --text-body-l-regular--line-height: 1.6;
+  --text-body-l-regular--letter-spacing: -0.01em;
+  --text-body-l-regular--font-weight: 400;
+
+  --text-body-l-medium: 20px;
+  --text-body-l-medium--line-height: 1.6;
+  --text-body-l-medium--letter-spacing: -0.01em;
+  --text-body-l-medium--font-weight: 500;
+
+  --text-body-m-regular: 16px;
+  --text-body-m-regular--line-height: 1.6;
+  --text-body-m-regular--letter-spacing: -0.01em;
+  --text-body-m-regular--font-weight: 400;
+
+  --text-body-m-medium: 16px;
+  --text-body-m-medium--line-height: 1.6;
+  --text-body-m-medium--letter-spacing: -0.01em;
+  --text-body-m-medium--font-weight: 500;
+
+  --text-nav: 16px;
+  --text-nav--line-height: 1.15;
+  --text-nav--letter-spacing: -0.01em;
+  --text-nav--font-weight: 500;
+
+  --text-label: 16px;
+  --text-label--line-height: 1.15;
+  --text-label--letter-spacing: 0.03em;
+  --text-label--font-weight: 600;
+
+  --text-button-l: 20px;
+  --text-button-l--line-height: 1.15;
+  --text-button-l--letter-spacing: -0.01em;
+  --text-button-l--font-weight: 600;
+
+  --text-button-m: 16px;
+  --text-button-m--line-height: 1.15;
+  --text-button-m--letter-spacing: -0.01em;
+  --text-button-m--font-weight: 600;
+}
+
+@layer base {
+  @media (max-width: 767px) {
+    :root {
+      --text-heading-xl: 30px;
+      --text-heading-l: 27px;
+      --text-heading-m: 24px;
+      --text-heading-s: 21px;
+      --text-heading-xs: 19px;
+      --text-body-l-regular: 17px;
+      --text-body-l-medium: 17px;
+      --text-body-m-regular: 15px;
+      --text-body-m-medium: 15px;
+      --text-nav: 15px;
+      --text-label: 13px;
+      --text-button-l: 17px;
+      --text-button-m: 15px;
+    }
+  }
+
+  .label {
+    text-transform: uppercase;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  @apply scroll-m-18 lg:scroll-m-20;
 }
